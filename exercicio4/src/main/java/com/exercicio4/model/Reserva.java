@@ -1,4 +1,4 @@
-package com.exercicio4.exercicio4.model;
+package com.exercicio4.model;
 
 import java.util.Date;
 import java.util.List;

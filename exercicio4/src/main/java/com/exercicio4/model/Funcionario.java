@@ -1,4 +1,4 @@
-package com.exercicio4.exercicio4.model;
+package com.exercicio4.model;
 
 import java.util.List;
 import javax.persistence.Entity;
@@ -9,15 +9,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Cliente extends Pessoa
+public class Funcionario extends Pessoa
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private int quantidadeOcupacoes;
+    private String setor;
     
-    private List<Reserva> reserva; 
+    private List<Reserva> reserva;
 
     public Long getId() {
         return id;
@@ -27,12 +27,12 @@ public class Cliente extends Pessoa
         this.id = id;
     }
 
-    public int getQuantidadeOcupacoes() {
-        return quantidadeOcupacoes;
+    public String getSetor() {
+        return setor;
     }
 
-    public void setQuantidadeOcupacoes(int quantidadeOcupacoes) {
-        this.quantidadeOcupacoes = quantidadeOcupacoes;
+    public void setSetor(String setor) {
+        this.setor = setor;
     }
 
     public List<Reserva> getReserva() {
@@ -43,10 +43,5 @@ public class Cliente extends Pessoa
         this.reserva = reserva;
     }
     
-    
-    public int calcularOcupacoes(List<Reserva> reservas)
-    {
-        return 1;
-    }
     
 }

@@ -1,4 +1,4 @@
-package com.exercicio4.exercicio4.controller;
+package com.exercicio4.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
