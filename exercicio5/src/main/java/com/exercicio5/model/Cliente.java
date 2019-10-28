@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.exercicio4.model;
+package com.exercicio5.model;
 
+import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Cliente extends Pessoa
+public class Cliente extends Pessoa implements Serializable
 {
 
     @OneToMany(mappedBy = "cliente")

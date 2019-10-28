@@ -1,6 +1,7 @@
-package com.exercicio4.model;
+package com.exercicio5.model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -9,7 +10,7 @@ import javax.persistence.OneToMany;
 public class Funcionario extends Pessoa
 {
 
-    @OneToMany(mappedBy = "funcionario")
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
     private List<Reserva> reservas;
     private String setor;
 

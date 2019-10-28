@@ -1,4 +1,4 @@
-package com.exercicio4.model;
+package com.exercicio5.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

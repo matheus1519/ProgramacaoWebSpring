@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.exercicio4.repository;
+package com.exercicio5.repository;
 
-import com.exercicio4.model.Cama;
+import com.exercicio5.model.Funcionario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
-public interface CamaRepository extends JpaRepository<Cama, Long> {
+/**
+ *
+ * @author 1519m
+ */
+public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
     
 }

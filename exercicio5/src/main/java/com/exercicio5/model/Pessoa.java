@@ -1,5 +1,6 @@
-package com.exercicio4.model;
+package com.exercicio5.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
@@ -15,7 +16,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Pessoa 
+public class Pessoa implements Serializable 
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

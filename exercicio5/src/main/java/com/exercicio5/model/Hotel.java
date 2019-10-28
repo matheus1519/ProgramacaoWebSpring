@@ -1,4 +1,4 @@
-package com.exercicio4.model;
+package com.exercicio5.model;
 
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -7,23 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Pessoa 
+public class Hotel 
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String nome;
-    
-    private String rg;
     
     @Embedded
     private Endereco endereco;
@@ -31,38 +26,14 @@ public class Pessoa
     // Removedor de orfaos kkkk
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Telefone> telefones;
-
-    @ManyToMany(mappedBy="pessoas")
-    private List<Hotel> hoteis;
-
-    public List<Hotel> getHoteis() {
-        return hoteis;
-    }
-
-    public void setHoteis(List<Hotel> hoteis) {
-        this.hoteis = hoteis;
-    }
     
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public List<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public void setTelefones(List<Telefone> telefones) {
-        this.telefones = telefones;
-    }
-
+    @ManyToMany
+    private List<Pessoa> pessoas;
     
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "hotel_id" ,nullable=false)
+    private List<Quarto> quartos;
 
-    
-    
     public Long getId() {
         return id;
     }
@@ -79,15 +50,35 @@ public class Pessoa
         this.nome = nome;
     }
 
-    public String getRg() {
-        return rg;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
+
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
+    }
     
-    
-    
+    public List<Quarto> getQuartos() {
+        return quartos;
+    }
+
+    public void setQuartos(List<Quarto> quartos) {
+        this.quartos = quartos;
+    }
 }

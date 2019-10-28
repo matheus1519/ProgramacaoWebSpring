@@ -1,10 +1,11 @@
-package com.exercicio4.model;
+package com.exercicio5.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Endereco 
+public class Endereco implements Serializable 
 {
     @Column(length = 200, nullable = false)
     private String logradouro;
