@@ -59,4 +59,10 @@ public class ClienteController
         clientes.deleteById(id);
         return true;
     }
+    
+    @GetMapping("/{id}/quantidade/reservas")
+    public Long quantReservas(@PathVariable Long id)
+    {
+        return clientes.findCountReservas(id);
+    }
 }
