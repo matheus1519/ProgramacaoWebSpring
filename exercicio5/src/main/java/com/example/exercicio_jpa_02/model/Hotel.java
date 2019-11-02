@@ -1,7 +1,9 @@
-package com.exercicio5.model;
+package com.example.exercicio_jpa_02.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,21 +11,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Hotel 
-{
+@NamedQuery(name = "Hotel.countQuartosECamas",
+            query = "SELECT NEW com.example.exercicio_jpa_02.model.TipoQuartoQtdCama(q.tipo, (SELECT COUNT(c) FROM Quarto q2 JOIN q2.camas c WHERE q2 = q)) FROM Hotel h JOIN h.quartos q WHERE h.id = :id")
+public class Hotel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+    @Column(nullable = false, length = 100)
     private String nome;
     
     @Embedded
     private Endereco endereco;
     
-    // Removedor de orfaos kkkk
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Telefone> telefones;
     
@@ -31,7 +34,7 @@ public class Hotel
     private List<Pessoa> pessoas;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "hotel_id" ,nullable=false)
+    @JoinColumn(name = "hotel_id", nullable = false)
     private List<Quarto> quartos;
 
     public Long getId() {
@@ -73,7 +76,7 @@ public class Hotel
     public void setPessoas(List<Pessoa> pessoas) {
         this.pessoas = pessoas;
     }
-    
+
     public List<Quarto> getQuartos() {
         return quartos;
     }
@@ -81,4 +84,7 @@ public class Hotel
     public void setQuartos(List<Quarto> quartos) {
         this.quartos = quartos;
     }
+    
+    
+    
 }

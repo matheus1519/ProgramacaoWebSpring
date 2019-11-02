@@ -1,19 +1,24 @@
-package com.exercicio5.model;
+package com.example.exercicio_jpa_02.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Endereco implements Serializable 
-{
+public class Endereco implements Serializable{
     @Column(length = 200, nullable = false)
     private String logradouro;
+    @Column(length = 5, nullable = false)
     private String numero;
+    @Column(length = 200)
     private String complemento;
+    @Column(length = 50)
     private String bairro;
+    @Column(length = 50)
     private String cidade;
+    @Column(length = 9)
     private String cep;
+    @Column(length = 2)
     private String uf;
 
     public String getLogradouro() {

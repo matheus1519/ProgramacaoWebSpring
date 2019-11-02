@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.exercicio5.model;
+package com.example.exercicio_jpa_02.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,26 +12,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Quarto 
-{
+public class Quarto implements Serializable{
 
-    @ManyToMany(mappedBy = "quartos")
-    private List<Reserva> reservas;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable=false, length = 80)
+    @Column(nullable = false, length = 20)
     private String tipo;
-    
-    @Column(name="ocupado")
+    @Column(name = "ocupado")
     private boolean isOcupado;
-    
+    @Column(name = "numQuarto")
     private int numeroQuarto;
     
     @OneToMany
     @JoinColumn(name = "quarto_id")
     private List<Cama> camas;
     
+    @ManyToMany(mappedBy = "quartos")
+    private List<Reserva> reservas;
+
     public Long getId() {
         return id;
     }
@@ -68,14 +63,6 @@ public class Quarto
         this.numeroQuarto = numeroQuarto;
     }
 
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
     public List<Cama> getCamas() {
         return camas;
     }
@@ -83,6 +70,15 @@ public class Quarto
     public void setCamas(List<Cama> camas) {
         this.camas = camas;
     }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+    
     
     
     

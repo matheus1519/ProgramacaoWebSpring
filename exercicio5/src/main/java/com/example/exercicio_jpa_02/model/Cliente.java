@@ -1,25 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.exercicio5.model;
+package com.example.exercicio_jpa_02.model;
 
-import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import org.springframework.data.jpa.repository.Query;
 
 @Entity
-@NamedQuery(name = "Cliente.findCountReservas", query = "select c.reservas from Cliente c where c.id = ?1")
+@NamedQuery(name = "Cliente.countReservasByCliente", query = "SELECT COUNT(r) FROM Cliente c JOIN c.reservas r WHERE c.id = :id")
+public class Cliente extends Pessoa{
 
-public class Cliente extends Pessoa implements Serializable
-{
-
-@OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente")
     private List<Reserva> reservas;
+    
+    @Column
     private int quantidadeOcupacoes;
 
     public int getQuantidadeOcupacoes() {
@@ -38,5 +32,6 @@ public class Cliente extends Pessoa implements Serializable
         this.reservas = reservas;
     }
     
+    
+    
 }
-
