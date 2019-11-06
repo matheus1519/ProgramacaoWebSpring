@@ -1,4 +1,4 @@
-package com.example.exercicio_jpa_02.controller;
+    package com.example.exercicio_jpa_02.controller;
 
 import com.example.exercicio_jpa_02.model.Cama;
 import com.example.exercicio_jpa_02.model.Hotel;
