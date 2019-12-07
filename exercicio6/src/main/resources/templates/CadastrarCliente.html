@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Clientes</title>
+        <meta charset="UTF-8"/>
+        <link href="estilo.css" rel="stylesheet"/>
+        <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav th:replace="~{barraMenu :: menu}"></nav>
+
+    <div class="container">
+        <h1 class="display-1 my-4">
+            Cadastrar Cliente
+        </h1 >
+        <hr class="my-4"/>
+        <form th:method="POST" th:object="${cliente}">
+
+            <div class="form-group">
+                <label for="id">ID: </label>
+                <input class="form-control" th:field="*{id}" type="number" readonly id="id" />
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Nome: </label>
+                <input class="form-control" th:field="*{nome}" type="text"  id="nome" placeholder="Nome" />
+            </div>
+
+            <div class="form-group">
+                <label for="data-nascimento">Data de Nascimento </label>
+                <input class="form-control" th:field="*{dtNasc}" type="date"  id="data-nascimento" placeholder="Data de Nascimento" />
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Foto: </label>
+                <input class="form-control" th:field=*{foto} type="text"  id="foto" placeholder="Foto"/>
+            </div>
+
+            <div class="form-group">
+                <label for="rua">Rua: </label>
+                <input class="form-control" th:field=*{endereco.rua} type="text"  id="rua" placeholder="Rua" />
+            </div>
+
+            <div class="form-group">
+                <label for="numero">Numero:  </label>
+                <input class="form-control" th:field=*{endereco.numero} type="number"  id="numero" placeholder="Numero" />
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone:  </label>
+                <input class="form-control" th:field="*{telefones[0].numero}" type="text"  id="telefone" placeholder="Telefone" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+
+        </form>
+
+
+    </div>
+    <script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

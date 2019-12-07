@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Clientes</title>
+        <meta charset="UTF-8"/>
+        <link href="estilo.css" rel="stylesheet"/>
+        <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+        <link
+</head>
+<body>
+    <nav th:replace="~{barraMenu :: menu}"></nav>
+
+    <div class="container">
+
+        <h1  class="display-1 my-4">
+            Lista de Clientes
+        </h1>
+        <table class="table">
+            <thead>
+                <tr scope="row">
+                    <th>ID</th>
+                    <th>Nome</th>                    
+                    <th>Data de Nascimento</th>
+                    <th>Foto</th>
+                    <th>Rua</th>                   
+                    <th>Numero</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.id}"></td>
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.dtNasc}"></td>
+                    <td th:text="${cliente.foto}"></td>
+                    <td th:text="${cliente.endereco.rua}"></td>
+                    <td th:text="${cliente.endereco.numero}"></td>
+                    <td th:text="${cliente.telefones[0].numero}"></td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
