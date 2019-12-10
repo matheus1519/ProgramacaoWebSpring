@@ -16,6 +16,27 @@
         <h1  class="display-1 my-4">
             Lista de Clientes
         </h1>
+
+        <div class="container divcard">
+            <div class="row  justify-content-between  ">
+                <div th:each="cliente: ${clientes}" class="card m-2"  style="width: 18rem;">
+                    <img class="card-img-top" th:src="${cliente.foto}"/>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${cliente.nome}"></h5>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${cliente.telefones[0].numero}"></h6>
+                        <p class="card-text">
+                            <div class="endereco">
+                                <span th:text="|${cliente.endereco.rua}, |"></span>
+                                <span th:text="${cliente.endereco.numero}"></span>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!--
         <table class="table">
             <thead>
                 <tr scope="row">
@@ -33,15 +54,15 @@
                     <td th:text="${cliente.id}"></td>
                     <td th:text="${cliente.nome}"></td>
                     <td th:text="${cliente.dtNasc}"></td>
-                    <td th:text="${cliente.foto}"></td>
+                    <td><img th:src="${cliente.foto}"/></td>
                     <td th:text="${cliente.endereco.rua}"></td>
                     <td th:text="${cliente.endereco.numero}"></td>
                     <td th:text="${cliente.telefones[0].numero}"></td>
 
-
                 </tr>
             </tbody>
-        </table>
+        </table>-->
+
     </div>
     <script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
