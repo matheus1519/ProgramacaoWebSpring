@@ -1,0 +1,10 @@
+.divcard{
+    display:flex;
+    margin-bottom: 20px;
+}
+.alert > span {
+    font-size: 14pt
+}
+.close {
+    cursor: pointer;
+}
