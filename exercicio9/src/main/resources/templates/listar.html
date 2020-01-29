@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Listar Clientes</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>Listar</div>
+        <p><a th:href="@{/clientes/cadastrar}">Cadastrar</a></p>
+        <table>
+            <tr th:each="cliente : ${lista}">
+                <td th:text="${cliente.nome}"></td>
+                <td ><a th:if="${!#strings.isEmpty(cliente.foto)}" target="_blank" th:href="${cliente.foto}"><img width="50" height="50" th:src="${cliente.foto}"/></a></td>
+                <td ><a th:if="${!#strings.isEmpty(cliente.curriculo)}" target="_blank" th:href="${cliente.curriculo}">curriculo</a></td>
+                <td th:text="${cliente.endereco.rua}"></td>
+                <td th:text="${cliente.endereco.numero}"></td>
+                <td>
+                    <table>
+                        <tr th:each="tel : ${cliente.telefones}">
+                            <td th:text="${tel.numero}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td><a th:href="@{/clientes/alterar/}+${cliente.id}">alt</a></td>
+                <td><a th:href="@{/clientes/deletar/}+${cliente.id}">del</a></td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
