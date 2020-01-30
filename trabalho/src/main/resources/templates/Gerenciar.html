@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+    <head>
+        <title>Trabalho Produtos</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link href="estilo.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <nav th:replace="~{ barraMenu :: menu }"></nav>
+        <div class="container my-5" >
+
+            <form th:object="${produto}" method="post" action="/gerenciar" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="id">ID: </label>
+                    <input class="form-control" th:field="*{id}" type="number" readonly id="id" />
+                </div>
+
+                <div class="form-group">
+                    <label for="nome">Nome: </label>
+                    <input class="form-control" th:field="*{nome}" type="text"  id="nome" placeholder="Nome" />
+                </div>
+
+                <div class="form-group">
+                    <label for="data-lancamento">Data de Lançamento </label>
+                    <input class="form-control" th:field="*{dataLancamento}" type="date"  id="data-lancamento" placeholder="Data de Lançamento" />
+                </div>
+
+                <div class="form-group">
+                    <label for="preco">Preço </label>
+                    <input class="form-control" th:field="*{preco}" type="number"  id="preco" placeholder="Preço" />
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade">Quantidade </label>
+                    <input class="form-control" th:field="*{quantidade}" type="number"  id="quantidade" placeholder="Quantidade" />
+                </div>
+
+                <div class="form-group">
+                    <label for="marca">Marca </label>
+                    <input class="form-control" th:field="*{marca}" type="text"  id="marca" placeholder="Marca" />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="foto">Foto: </label>
+                    <input class="form-control-file" type="file" name="photo" accept="image/*" id="foto" placeholder="Foto"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+            </form>
+
+            <table class="table mt-5">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data de Lançamento</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p : ${produtos}">
+                        <td><img th:src="${p.foto}"/></td>
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.nome}"></td>
+                        <td th:text="${p.dataLancamento.getTime()}"></td>
+                        <td th:text="${p.preco}"></td>
+                        <td th:text="${p.quantidade}"></td>
+                        <td th:text="${p.marca}"></td>
+                        <td>
+                            <a th:href="|/gerenciar/alterar/${p.id}|" class="text-white btn btn-warning "><i class="fas fa-user-edit fa-2x"></i></a>
+                        </td>
+                        <td>        
+                            <a th:href="|/gerenciar/excluir/${p.id}|" class="btn btn-danger ml-2"><i class="fas fa-trash-alt fa-2x"></i></a>
+                        </td>    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/926089e3cd.js" crossorigin="anonymous"></script>
+    </body>
+</html>
