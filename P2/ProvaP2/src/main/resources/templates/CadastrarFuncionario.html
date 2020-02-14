@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastrar Funcionário - Aplicação</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+    </head>
+    <body>
+        <nav th:insert="~{ barraMenu :: menu }"></nav>
+
+        <div class="container my-5">
+            <h1 class="display-4">Cadastrar Funcionário</h1>
+
+            <form th:action="@{/funcionarios/cadastrar}" method="POST" th:object="${funcionario}">
+
+                <div class="alert alert-danger" role="alert"  th:each="err : ${#fields.errors('*')}">
+                    <span th:text="${err}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" placeholder="ID" th:field="*{id}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="codigo">Código</label>
+                    <input type="number" class="form-control" id="codigo" placeholder="Código" th:field="*{codigo}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" th:field="*{nome}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" class="form-control" id="cargo" placeholder="Cargo" th:field="*{cargo}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="salario">Salário</label>
+                    <input type="text" class="form-control" id="salario" placeholder="Salário" th:field="*{salario}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" placeholder="CPF" th:field="*{cpf}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" placeholder="Telefone" th:field="*{telefone}"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Enviar Dados</button>
+
+            </form>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
